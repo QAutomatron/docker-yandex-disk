@@ -12,3 +12,9 @@ RUN mkdir $YANDEX_FOLDER
 
 # Folder to mount
 VOLUME ["$YANDEX_FOLDER"]
+
+# Copy start script
+COPY start.sh /
+RUN chmod +x /start.sh
+
+CMD ["/start.sh"]
