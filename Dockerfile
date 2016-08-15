@@ -4,8 +4,14 @@ MAINTAINER QAutomatron
 # Default variables
 ENV YANDEX_FOLDER = "/var/lib/selenium"
 
+# Install sudo and wget
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update -yqq
+RUN apt-get install sudo -yqq
+RUN apt-get install wget -yqq
+
 # Will install yandex-disk
-RUN echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex.list > /dev/null && wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - && sudo apt-get update && sudo apt-get install -y yandex-disk
+RUN echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | tee -a /etc/apt/sources.list.d/yandex.list > /dev/null && wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | apt-key add - && apt-get update && apt-get install -y yandex-disk
 
 # Will create folder
 RUN mkdir $YANDEX_FOLDER
