@@ -14,10 +14,10 @@ RUN apt-get install wget -yqq
 RUN echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | tee -a /etc/apt/sources.list.d/yandex.list > /dev/null && wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | apt-key add - && apt-get update && apt-get install -y yandex-disk
 
 # Will create folder
-RUN mkdir $YANDEX_FOLDER
+RUN mkdir /var/lib/selenium
 
 # Folder to mount
-VOLUME ["$YANDEX_FOLDER"]
+VOLUME ["/var/lib/selenium"]
 
 # Copy start script
 COPY start.sh /
