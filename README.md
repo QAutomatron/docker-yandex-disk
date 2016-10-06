@@ -14,7 +14,7 @@ docker run -d --name yadisk1 \
  ```
 
 
-Now you can mount files from another container with `--volumes-from yadisk`.
+Now you can mount files from another container with `--volumes-from yadisk`
 
 
 Files would be available in `/var/lib/selenium` folder.
